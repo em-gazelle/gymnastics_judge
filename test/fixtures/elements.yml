@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  element_name: MyString
+  max_value: MyString
+  final_value: MyString
+  connection_value: MyString
+  connected_to_prior_element: false
+  event_id: 
+
+two:
+  element_name: MyString
+  max_value: MyString
+  final_value: MyString
+  connection_value: MyString
+  connected_to_prior_element: false
+  event_id: 
