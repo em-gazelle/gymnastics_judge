@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
-  root 'event#new'
+  # root 'event#new'
+  root 'dashboard#index'
 
   resources :events, only: [:create, :new, :update, :edit, :show] do
     resources :elements, only: [:index, :create, :new, :destroy]
+  end
+
+  namespace :api do
+    resources :gymnastics
   end
 
 
