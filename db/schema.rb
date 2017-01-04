@@ -11,28 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920081403) do
-
-  create_table "elements", force: :cascade do |t|
-    t.string   "element_name"
-    t.string   "max_value"
-    t.string   "final_value"
-    t.string   "connection_value"
-    t.boolean  "connected_to_prior_element"
-    t.integer  "event_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "elements", ["event_id"], name: "index_elements_on_event_id"
+ActiveRecord::Schema.define(version: 20170103022809) do
 
   create_table "events", force: :cascade do |t|
     t.string   "event_name"
     t.string   "final_score"
     t.string   "max_score"
-    t.boolean  "gender"
+    t.string   "gender"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "skills", force: :cascade do |t|
+    t.string  "skill_name"
+    t.string  "element_group"
+    t.boolean "acro_series"
+    t.boolean "mount"
+    t.boolean "dismount"
+    t.string  "link"
+    t.integer "event_id"
+  end
+
+  add_index "skills", ["event_id"], name: "index_skills_on_event_id"
 
 end

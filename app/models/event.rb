@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	has_many :elements
+	has_many :skills
 
 	# has_many :requirements
 	# has_many :skills, through: :requirements

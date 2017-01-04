@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   
   root 'dashboard#index'
-
-  resources :elements, only: [:index, :create, :new, :destroy]
     
   namespace :api do
-    resources :events do
+    resources :events, only: [:index, :create, :show] do
       get :search, on: :collection
+      resources :skills, only: [:index, :show]
     end
   end
 
