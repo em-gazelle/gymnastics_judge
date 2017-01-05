@@ -27,8 +27,8 @@ var SkillApplication = React.createClass({
     return(
     <div>
     	<div>
-          <h1>ReactJS Tutorial</h1>
-          <p>step by step</p>
+          <h1>Gymnastics Skills</h1>
+          <p>View what each event's skills look like:</p>
         </div>
     	<div>
     		<SelectEvent handleSearch={this.handleSearch} />

@@ -1,7 +1,11 @@
 var SelectEvent = React.createClass({
-	handleSearch: function() {
-		// query = "event". get event_id for @event.skills
-		var selected_event = ReactDOM.findDOMNode(this.refs.selected_event).value;
+     getInitialState: function() {
+        return {
+            value: 'All Events'
+        }
+     },
+	handleSearch: function(event) {
+		selected_event = event.target.value;	
 		var self = this;
 		$.ajax({
 			url: 'api/skills/filter',
@@ -14,15 +18,22 @@ var SelectEvent = React.createClass({
 			}
 		});
 	},
-	render: function() {
-		return(
-			<input onChange={this.handleSearch}
-				type="text"
-				className="form-control"
-				placeholder="Which event are you judging?"
-				ref="selected_event"
-			/>
-
-		)
-	}
+	change: function(event){
+        this.setState({value: event.target.value});
+        this.handleSearch(event);
+    },
+    render: function(){
+        return(
+           <div>
+               <select id="selected_event" onChange={this.change} value={this.state.value}>
+                  <option disabled value="All Events">Which event are you judging?</option>
+                  <option value="Beam">Beam</option>
+                  <option value="Uneven Bars">Uneven Bars</option>
+                  <option value="Vault">Vault</option>
+                  <option value="Floor">Floor</option>
+               </select>
+               <p>List of Skills for: {this.state.value}</p>
+           </div>
+        );
+     }
 });

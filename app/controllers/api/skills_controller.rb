@@ -1,10 +1,5 @@
 module Api
 	class SkillsController < ApplicationController
-		# def show
-		# 	@skill = Skill.find(params[:id])
-		# 	render json: skill
-		# end
-
 		def index
 			render json: Skill.all
 		end
