@@ -11,7 +11,9 @@ module Api
 		end
 
 		def index
-			render json: Event.all
+			render json: Event.all.pluck(:event_name, :id)
+			# [["beam", 1], ["floor", 2], [...]] (array of arrays)
+			# render json: Event.all
 		end
 
 		def search

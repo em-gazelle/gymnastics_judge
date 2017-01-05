@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   namespace :api do
     resources :events, only: [:index, :create, :show] do
       get :search, on: :collection
-      resources :skills, only: [:index, :show]
+    end
+    resources :skills, only: [:index, :show] do
+      get :filter, on: :collection
     end
   end
 
