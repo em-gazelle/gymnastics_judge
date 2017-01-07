@@ -3,7 +3,8 @@ var SkillTable = React.createClass({
 	onItemClick: function(e) {
 	    var skillDemo = document.getElementById('skillDemo');
 	    skill_link = e.currentTarget.dataset.id;
-        if (!!skill_link) {skill_link = skill_link+"?autoplay=1"; }
+        if (skill_link.includes("?")) {skill_link = skill_link+"&autoplay=1"; }
+        else { skill_link = skill_link+"?autoplay=1"}
 		skillDemo.src = skill_link;
 	},
 

@@ -11,28 +11,28 @@
 
 Event.create(event_name: "Beam", gender: "Women's").skills.create([
 	{
-		skill_name: "Wolf Jump, Full Turn",
+		skill_name: "Wolf Turn, Full",
 		element_group: "B",
 		acro_series: false,
 		dismount: false,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/nquDtM5LHI0?start=8"
 	}, 
 	{
-		skill_name: "Aerial",
+		skill_name: "Side Aerial",
 		element_group: "B",
 		acro_series: true,
 		dismount: false,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/sVPLCIge8_k?start=9"
 	}, 
 	{			
-		skill_name: "Back Handspring Dismount",
+		skill_name: "Gainer Layout Dismount",
 		element_group: "A",
 		acro_series: false,				
 		dismount: true,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/jOQN4Kg_sBw"
 	}, 
 	{ 			
 		skill_name: "The Dick",
@@ -40,7 +40,7 @@ Event.create(event_name: "Beam", gender: "Women's").skills.create([
 		acro_series: false,
 		dismount: false,
 		mount: true,
-		link: ""
+		link: "https://www.youtube.com/embed/xd_9Oa9gnh4?start=2"
 	}
 ])
 Event.create(event_name: "Floor", gender: "Women's").skills.create([
@@ -66,28 +66,28 @@ Event.create(event_name: "Uneven Bars", gender: "Women's").skills.create([
 		element_group: "C",
 		dismount: true,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/EGttsigbwMw?start=6"
 	}, 
 	{
 		skill_name: "Kip",
 		element_group: "A",
 		dismount: false,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/rmKzI6W8dbc?start=5"
 	},			
 	{
 		skill_name: "Giant",
 		element_group: "B",
 		dismount: false,
 		mount: false,
-		link: ""
+		link: "https://www.youtube.com/embed/PIFJF3CRwcs"
 	},			
 	{
-		skill_name: "Salto Forward to Hang on High Bar",
+		skill_name: "Swing Forward 540 Flight to Hang",
 		element_group: "C",
 		dismount: false,
 		mount: true,
-		link: ""
+		link: "https://www.youtube.com/embed/o3fiFBr1MwA"
 	}
 ])
 Event.create(event_name: "Vault", gender: "Women's").skills.create([
