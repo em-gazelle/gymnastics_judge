@@ -30,7 +30,7 @@ var SkillApplication = React.createClass({
         </div>
         <div className="center">
         	<div className="horizontal select-title">
-            Choose your favorite gymnastic's event:
+            Choose your favorite gymnastics event:
       		</div>
           <div className="horizontal">
             <SelectEvent handleSearch={this.handleSearch} />
