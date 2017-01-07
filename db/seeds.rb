@@ -47,17 +47,17 @@ Event.create(event_name: "Floor", gender: "Women's").skills.create([
 	{			
 		skill_name: "Back Handspring",
 		element_group: "A",
-		link: "https://www.youtube.com/embed/DZjS_HM97Qk?autoplay=1"
+		link: "https://www.youtube.com/embed/DZjS_HM97Qk"
 	},
 	{			
 		skill_name: "Back Tuck",
 		element_group: "A",
-		link: "https://www.youtube.com/embed/uFxQHe_Mxhc?autoplay=1"
+		link: "https://www.youtube.com/embed/uFxQHe_Mxhc"
 	},			
 	{			
 		skill_name: "The Biles",
 		element_group: "E",
-		link: "https://www.youtube.com/embed/zM5tjn8T9mg?autoplay=1"
+		link: "https://www.youtube.com/embed/zM5tjn8T9mg"
 	}
 ])
 Event.create(event_name: "Uneven Bars", gender: "Women's").skills.create([
@@ -91,9 +91,9 @@ Event.create(event_name: "Uneven Bars", gender: "Women's").skills.create([
 	}
 ])
 Event.create(event_name: "Vault", gender: "Women's").skills.create([
-	{ skill_name: "Produnova", link: "https://www.youtube.com/embed/JPf9ruYJLo8?autoplay=1" }, 
-	{ skill_name: "Yurchenko", link: "https://www.youtube.com/embed/Pm2vb3Bj19s?autoplay=1" }, 
-	{ skill_name: "Tsukahara", link: "https://www.youtube.com/embed/pOgebfg4hh0?autoplay=1" }
+	{ skill_name: "Produnova", link: "https://www.youtube.com/embed/JPf9ruYJLo8" }, 
+	{ skill_name: "Yurchenko", link: "https://www.youtube.com/embed/Pm2vb3Bj19s" }, 
+	{ skill_name: "Tsukahara", link: "https://www.youtube.com/embed/pOgebfg4hh0" }
 ])
 		# Event.create(event_name: "Parallel Bars", gender: "Men's", level: 8)
 		# Event.create(event_name: "High Bar", gender: "Men's", level: 8)

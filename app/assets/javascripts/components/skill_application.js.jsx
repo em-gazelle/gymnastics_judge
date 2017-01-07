@@ -22,19 +22,18 @@ var SkillApplication = React.createClass({
   handleSearch: function(skills) {
   	this.setState({ skills: skills });
   },
-
   render: function() {
     return(
-    <div>
-    	<div>
+      <div>
+      	<div>
           <h1>Gymnastics Skills</h1>
           <p>View what each event's skills look like:</p>
         </div>
-    	<div>
-    		<SelectEvent handleSearch={this.handleSearch} />
-    	</div>
+      	<div>
+      		<SelectEvent handleSearch={this.handleSearch} />
+      	</div>
         <div>
-	        <SkillTable skills={this.state.skills} />
+          <SkillTable skills={this.state.skills} />
         </div>
       </div>
     )
