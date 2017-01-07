@@ -15,3 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
+Dockerfile
+app/assets/javascripts/components/filter_skills.js.jsx

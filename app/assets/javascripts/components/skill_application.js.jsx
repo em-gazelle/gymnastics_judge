@@ -24,14 +24,18 @@ var SkillApplication = React.createClass({
   },
   render: function() {
     return(
-      <div>
+      <div className="all">
       	<div>
-          <h1>Gymnastics Skills</h1>
-          <p>View what each event's skills look like:</p>
+          <h1 className="center">Gymnastics Skills - Build your own Routine</h1>
         </div>
-      	<div>
-      		<SelectEvent handleSearch={this.handleSearch} />
-      	</div>
+        <div className="center">
+        	<div className="horizontal select-title">
+            Choose your favorite gymnastic's event:
+      		</div>
+          <div className="horizontal">
+            <SelectEvent handleSearch={this.handleSearch} />
+        	</div>
+        </div>
         <div>
           <SkillTable skills={this.state.skills} />
         </div>

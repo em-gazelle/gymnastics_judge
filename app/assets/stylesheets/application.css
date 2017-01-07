@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+
+.horizontal {
+	display: inline-block;
+	margin:5px;
+	vertical-align: top;
+}
+.center {
+	text-align: center;
+}
+.left {
+	text-align: left;
+}
+
+.all {
+	padding: 5px;
+}
+.select-title {
+	text-align: center;
+	height: 8px;
+	line-height: 28px;
+}
+#skills-and-demo {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+#skills-table {
+	text-align: left;
+	margin-right: 60px;
+}
+
+.select-style {
+	background: #FFF;
+	overflow: hidden;
+	display: inline-block;
+	color: #525252;
+	font-weight: 300;
+	-webkit-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+	-moz-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+	border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+	-webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+	-moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
+	box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+	border: solid 1px #DADADA;
+	font-family: "helvetica neue",arial;
+	position: relative;
+	padding-right:20px;
+}
+.select-style span {
+	position: absolute;
+	right: 10px;
+	width: 8px;
+	height: 8px;
+	background: url(http://projects.authenticstyle.co.uk/niceselect/arrow.png) no-repeat;
+	top: 50%;
+	margin-top: -4px;
+}
+.select-style select {
+	-webkit-appearance: none;
+	appearance:none;
+	width:120%;
+	background:none;
+	background:transparent;
+	border:none;
+	outline:none;
+	padding:7px 10px;
+}

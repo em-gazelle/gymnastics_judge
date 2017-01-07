@@ -24,7 +24,7 @@ var SelectEvent = React.createClass({
     },
     render: function(){
         return(
-           <div>
+           <div className="select-style">
                <select id="selected_event" onChange={this.change} value={this.state.value}>
                   <option disabled value="All Events">Which event are you judging?</option>
                   <option value="Beam">Beam</option>
@@ -32,7 +32,7 @@ var SelectEvent = React.createClass({
                   <option value="Vault">Vault</option>
                   <option value="Floor">Floor</option>
                </select>
-               <p>List of Skills for: {this.state.value}</p>
+{/*               <h3 className="left">{this.state.value} Skills:</h3>  */}
            </div>
         );
      }

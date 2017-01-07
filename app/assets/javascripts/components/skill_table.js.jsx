@@ -11,22 +11,28 @@ var SkillTable = React.createClass({
 	render: function() {
 		var skills = this.props.skills.map(function(skill) {
 			return(
-				<table>
-					<tbody>
-				    <tr onClick={this.onItemClick} data-id={skill.link} key={skill.id}>
-				      <td>{skill.skill_name}</td>
-				      <td><a href="#">&#9658;</a></td>
-				    </tr>
-				    </tbody>
-				</table>
+			    <tr onClick={this.onItemClick} data-id={skill.link} key={skill.id}>
+			      <td>{skill.skill_name}</td>
+			      <td><a href="#">&#9658;</a></td>
+			    </tr>
 			)
 		}.bind(this));
 	
 		return(
-			<div>
-				<div>{skills}</div>
-				<div class="skillDemo"> Demo of Gymnastics Skill:
-					<iframe id="skillDemo" width="560" height="315" src="about:blank" frameBorder="1"></iframe>
+			<div id="skills-and-demo">
+				<table id="skills-table" className="horizontal">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{skills}
+				    </tbody>
+				</table>
+				<div id="demo" className="horizontal"> 
+					<div className="center"><iframe id="skillDemo" width="560" height="315" src="about:blank" frameBorder="1"></iframe></div>
 				</div>
 			</div>
 		)
