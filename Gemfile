@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'react-rails'
 
+gem "bower-rails", "~> 0.11.0"
+
+
 gem 'puma'
 
 

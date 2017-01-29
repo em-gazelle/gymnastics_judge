@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require react
+//= require react/react-dom
 //= require react_ujs
 //= require components
+//= require react-player
+
 //= require_tree .
