@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103022809) do
+ActiveRecord::Schema.define(version: 20170307233200) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
     t.string   "event_name"
@@ -22,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170103022809) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "routines", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "skill_id"
+  end
+
+  add_index "routines", ["event_id"], name: "index_routines_on_event_id", using: :btree
+  add_index "routines", ["skill_id"], name: "index_routines_on_skill_id", using: :btree
+
   create_table "skills", force: :cascade do |t|
     t.string  "skill_name"
     t.string  "element_group"
@@ -29,9 +40,8 @@ ActiveRecord::Schema.define(version: 20170103022809) do
     t.boolean "mount"
     t.boolean "dismount"
     t.string  "link"
-    t.integer "event_id"
   end
 
-  add_index "skills", ["event_id"], name: "index_skills_on_event_id"
-
+  add_foreign_key "routines", "events"
+  add_foreign_key "routines", "skills"
 end
