@@ -3,14 +3,23 @@ Rails.application.routes.draw do
   root 'dashboard#index'
     
   namespace :api do
-    resources :events, only: [:index, :create, :show] do
-      get :search, on: :collection
-    end
+    resources :events, only: [:new, :create, :show]
+    
     resources :skills, only: [:index, :show] do
       get :filter, on: :collection
     end
+    
+    resources :routines, only: [:new, :create, :index]
   end
 
+  # move event_name onto skill
+  # MANY skills by 'deductions', with appropriate value
+
+  # 'Skill#filter' filter skills on 'event_name'
+  #   'Skill#search' search within form for specific skill based on deductions selected (function as binary search form)
+  #   'Skill#show' action => Box to right of skill demo in React. (already set up....)
+  #   'Event#create' action => choose/search for skill => one by one, form for ADDING skill_id and routine_id to association table
+  #   'Routine#show / Skill#index' React => get 'index' of skills on routine.skills => update list
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

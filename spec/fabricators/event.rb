@@ -1,0 +1,3 @@
+Fabricator(:event) do 
+
+end

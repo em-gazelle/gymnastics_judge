@@ -9,4 +9,8 @@ class Event < ActiveRecord::Base
 	# delegate/scope based on event_name ... then use within model methods
 	# model methods used for calculating E/D/etc. score should take 'event_name' as a param
 
+	# validates :number_of_skills_per_event_limit
+	# def number_of_skills_per_event_limit
+	# 	errors.add(:event_name, "does not match skill") unless customer.active?
+	# end
 end
