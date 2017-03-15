@@ -13,7 +13,8 @@ Skill.create(
 		acro_series: false,
 		dismount: false,
 		mount: false,
-		link: "https://www.youtube.com/embed/nquDtM5LHI0?start=8"
+		link: "https://www.youtube.com/embed/nquDtM5LHI0?start=8",
+		points: 1.5
 )
 Skill.create(
 		event_name: "Beam",
@@ -22,7 +23,8 @@ Skill.create(
 		acro_series: true,
 		dismount: false,
 		mount: false,
-		link: "https://www.youtube.com/embed/sVPLCIge8_k?start=9"
+		link: "https://www.youtube.com/embed/sVPLCIge8_k?start=9",
+		points: 1.5
 )
 Skill.create(
 		event_name: "Beam",
@@ -31,7 +33,8 @@ Skill.create(
 		acro_series: false,				
 		dismount: true,
 		mount: false,
-		link: "https://www.youtube.com/embed/jOQN4Kg_sBw"
+		link: "https://www.youtube.com/embed/jOQN4Kg_sBw",
+		points: 2
 )
 Skill.create(
 		event_name: "Beam",
@@ -40,25 +43,29 @@ Skill.create(
 		acro_series: false,
 		dismount: false,
 		mount: true,
-		link: "https://www.youtube.com/embed/xd_9Oa9gnh4?start=2"
+		link: "https://www.youtube.com/embed/xd_9Oa9gnh4?start=2",
+		points: 2
 )
 Skill.create(
 		event_name: "Floor",
 		skill_name: "Back Handspring",
 		element_group: "A",
-		link: "https://www.youtube.com/embed/DZjS_HM97Qk"
+		link: "https://www.youtube.com/embed/DZjS_HM97Qk",
+		points: 1
 )
 Skill.create(
 		event_name: "Floor",
 		skill_name: "Back Tuck",
 		element_group: "A",
-		link: "https://www.youtube.com/embed/uFxQHe_Mxhc"
+		link: "https://www.youtube.com/embed/uFxQHe_Mxhc",
+		points: 1
 )
 Skill.create(
 		event_name: "Floor",
 		skill_name: "The Biles",
 		element_group: "E",
-		link: "https://www.youtube.com/embed/zM5tjn8T9mg"
+		link: "https://www.youtube.com/embed/zM5tjn8T9mg",
+		points: 4
 )
 Skill.create(
 		event_name: "Uneven Bars",
@@ -66,7 +73,8 @@ Skill.create(
 		element_group: "C",
 		dismount: true,
 		mount: false,
-		link: "https://www.youtube.com/embed/EGttsigbwMw?start=6"
+		link: "https://www.youtube.com/embed/EGttsigbwMw?start=6",
+		points: 3
 )
 Skill.create(
 		event_name: "Uneven Bars",
@@ -74,7 +82,8 @@ Skill.create(
 		element_group: "A",
 		dismount: false,
 		mount: false,
-		link: "https://www.youtube.com/embed/rmKzI6W8dbc?start=5"
+		link: "https://www.youtube.com/embed/rmKzI6W8dbc?start=5",
+		points: 1
 )
 Skill.create(
 		event_name: "Uneven Bars",
@@ -82,7 +91,8 @@ Skill.create(
 		element_group: "B",
 		dismount: false,
 		mount: false,
-		link: "https://www.youtube.com/embed/PIFJF3CRwcs"
+		link: "https://www.youtube.com/embed/PIFJF3CRwcs",
+		points: 2
 )
 Skill.create(
 		event_name: "Uneven Bars",
@@ -90,20 +100,24 @@ Skill.create(
 		element_group: "C",
 		dismount: false,
 		mount: true,
-		link: "https://www.youtube.com/embed/o3fiFBr1MwA"
+		link: "https://www.youtube.com/embed/o3fiFBr1MwA",
+		points: 3
 )
 Skill.create(
 		event_name: "Vault",
 		skill_name: "Produnova", 
-		link: "https://www.youtube.com/embed/JPf9ruYJLo8"
+		link: "https://www.youtube.com/embed/JPf9ruYJLo8",
+		points: 16
 )
 Skill.create(
 		event_name: "Vault",
 		skill_name: "Yurchenko", 
-		link: "https://www.youtube.com/embed/Pm2vb3Bj19s"
+		link: "https://www.youtube.com/embed/Pm2vb3Bj19s",
+		points: 14,
 )
 Skill.create(
 		event_name: "Vault",
 		skill_name: "Tsukahara", 
-		link: "https://www.youtube.com/embed/pOgebfg4hh0"
+		link: "https://www.youtube.com/embed/pOgebfg4hh0",
+		points: 14.5
 )
