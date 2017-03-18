@@ -20,7 +20,9 @@ module Api
 
 		def show
 			@skills = @event.skills
-			render json: { skills: @skills, event: @event }
+			@event.set_final_score
+
+			render json: { event: @event, skills: @skills }
 		end
 
 		def index
