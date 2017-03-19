@@ -12,6 +12,19 @@ module Api
 			end
 		end
 
+		def destroy
+			# binding.pry
+
+			# Event.find(params[:id]).skills.destroy(Skill.find(params[:skill_id]))
+
+			@routine = Routine.find_by(event_id: params[:id], skill_id: params[:skill_id])
+
+			if @routine.destroy
+				render json: :no_content
+			else
+		    	render json: @routine, message: "Failed to remove", status: :bad_request
+		    end
+		end
 
 		private
 

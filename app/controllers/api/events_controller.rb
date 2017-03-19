@@ -19,10 +19,8 @@ module Api
 		end
 
 		def show
-			@skills = @event.skills
-			@event.set_final_score
-
-			render json: { event: @event, skills: @skills }
+			@event = Event.find(params[:id])
+			render json: @event.final_info
 		end
 
 		def index
@@ -32,6 +30,13 @@ module Api
 		end
 
 		def destroy
+			@event = Event.find(params[:id])
+
+		    if @event.destroy
+		    	render json: :no_content
+		    else
+		    	render json: @event, message: "Failed to remove", status: :bad_request
+		    end
 		end
 
 		private

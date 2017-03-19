@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	has_many :routines
+	has_many :routines, dependent: :destroy
 	has_many :skills, through: :routines
 
 	# has_attached_image :event_pictures
@@ -85,13 +85,16 @@ class Event < ActiveRecord::Base
 
 	def final_score
 		@event_name = self.event_name
-		@skills = self.skills
-		
+		@skills = self.skills		
+
 		return "-" if @skills.empty?
-		
+
 		(d_score + e_score - neutral_deductions).to_s
 	end
 
+	def final_info	
+		{ final_score: final_score, unmet_requirements: unmet_requirements, skills: @skills }
+	end
 	# Refactor ... 'event' to 'routine' and 'routine' to 'deduction/modification'. put connection_values as new Skill instances (skill_name: connected-skill-to-skill vs. skill, skill + deduction_val) depending on gymnastics-rules (how much volitility in connection value differences? common factors [A to A/element_group or random and more nuanced?])
 
 end
