@@ -2,7 +2,7 @@ module Api
 	class RoutinesController < ApplicationController
 
 		def create
-			@event = Event.find(routine_params[:event_id])
+			@event = Event.find(params[:event_id])
 			@skill = Skill.find_by(skill_name: routine_params[:skill_name])
 
 			if @event.skills << @skill
@@ -13,11 +13,7 @@ module Api
 		end
 
 		def destroy
-			# binding.pry
-
-			# Event.find(params[:id]).skills.destroy(Skill.find(params[:skill_id]))
-
-			@routine = Routine.find_by(event_id: params[:id], skill_id: params[:skill_id])
+			@routine = Routine.find_by(event_id: params[:event_id], skill_id: params[:id])
 
 			if @routine.destroy
 				render json: :no_content
@@ -29,7 +25,7 @@ module Api
 		private
 
 		def routine_params
-			params.require(:routine).permit(:event_id, :skill_name)
+			params.require(:skill).permit(:skill_name)
 		end
 	end
 end

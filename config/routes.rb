@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   root 'dashboard#index'
     
   namespace :api do
-    resources :events, only: [:new, :create, :show, :destroy]
-    
-    resources :skills, only: [:index, :show] do
-      get :filter, on: :collection
+    resources :events, only: [:new, :create, :show, :destroy] do
+      resources :routines, only: [:new, :create, :index, :destroy]
+
+      resources :skills, only: [:index, :show] do
+        get :filter, on: :collection
+      end
     end
     
-    resources :routines, only: [:new, :create, :index, :destroy]
   end
 
   # move event_name onto skill

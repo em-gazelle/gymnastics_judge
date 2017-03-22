@@ -1,15 +1,15 @@
 module Api
 	class SkillsController < ApplicationController
-		before_action :set_event, only: [:create]
+		before_action :set_event, only: [:filter, :index]
 
 		def index
-			# @skills = Skill.where(event_name: @event.event_name)
-			# render json: @skills
-			render json: Skill.all
+			@skills = Skill.where(event_name: @event.event_name)
+			render json: @event.skills
 		end
 
 		def filter
-			@skills = Skill.where(event_name: params[:selected_event])
+			@skills = Skill.where(event_name: @event.event_name)
+			# @skills = Skill.where(event_name: @event.event_name)
 			render json: @skills
 		end
 
