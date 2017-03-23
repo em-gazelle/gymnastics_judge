@@ -24,9 +24,10 @@ module Api
 		end
 
 		def index
-			render json: Event.all.pluck(:event_name, :id)
+			@events = Event.all
+			# @events = Event.all.pluck(:event_name, :id, :final_score)
 			# [["beam", 1], ["floor", 2], [...]] (array of arrays)
-			# render json: Event.all
+			render json: @events
 		end
 
 		def destroy

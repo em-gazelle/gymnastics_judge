@@ -2,6 +2,7 @@ var SkillApplication = React.createClass({
  
   getInitialState: function() {
   	return { skills: [] };
+    // return { events: [] };
   },
   componentDidMount: function() {
   	this.getDataFromApi();
@@ -9,7 +10,7 @@ var SkillApplication = React.createClass({
   getDataFromApi() {
   	var self = this;
   	$.ajax({
-  		url: '/api/skills',
+  		url: '/api/skills/filter',
   		success: function(data) {
   			self.setState({ skills: data });
   			// alert(JSON.stringify(data));
@@ -18,6 +19,18 @@ var SkillApplication = React.createClass({
   			alert('Cannot get data from API: ', error);
   		}
   	});
+
+    // $.ajax({
+    //   url: '/api/events',
+    //   success: function(data) {
+    //     self.setState({ events: data });
+    //     alert(JSON.stringify(data));
+    //   },
+    //   error: function(xhr, status, error) {
+    //     alert('Cannot get data from API: ', error);
+    //   }
+    // });
+  
   },
   handleSearch: function(skills) {
   	this.setState({ skills: skills });
@@ -39,6 +52,11 @@ var SkillApplication = React.createClass({
         <div>
           <SkillTable skills={this.state.skills} />
         </div>
+
+{/*        <div>
+          <EventTable events={this.state.events} />
+        </div>
+*/}
       </div>
     )
   }

@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   root 'dashboard#index'
     
   namespace :api do
-    resources :events, only: [:new, :create, :show, :destroy] do
+    resources :events do #, only: [:new, :create, :show, :destroy] do
       resources :routines, only: [:new, :create, :index, :destroy]
 
       resources :skills, only: [:index, :show] do
-        get :filter, on: :collection
+        # get :filter, on: :collection
       end
+    end
+    resources :skills, only: [:index] do
+      get :filter, on: :collection
     end
     
   end

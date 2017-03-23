@@ -12,7 +12,7 @@ var EventApplication = React.createClass({
   		url: '/api/events',
   		success: function(data) {
   			self.setState({ events: data });
-  			// alert(JSON.stringify(data));
+  			alert(JSON.stringify(data));
   		},
   		error: function(xhr, status, error) {
   			alert('Cannot get data from API: ', error);
