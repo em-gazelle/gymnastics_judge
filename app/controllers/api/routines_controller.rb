@@ -6,7 +6,8 @@ module Api
 			@skill = Skill.find(routine_params[:skill_id])
 
 			if @event.skills << @skill
-				render json: @event.skills
+				render json: { event_info: @event.final_info }
+				# event_skills: @event.skills
 			else
 				render json: "Couldn't add skill to routine"
 			end

@@ -1,7 +1,7 @@
 var SkillApplication = React.createClass({
  
   getInitialState: function() {
-    return { skills: [], event_id: null };
+    return { skills: [], event_id: null, event_final_score: '' };
   },
   // componentDidMount: function() {
   // 	this.getDataFromApi();
@@ -22,6 +22,9 @@ var SkillApplication = React.createClass({
   handleAddEvent: function(data) {
     this.setState({ skills: data.skills, event_id: data.event_id });
   },
+  addSkill: function(data) {
+    this.setState({ event_final_score: data.event_info.final_score });
+  },
   render: function() {
     return(
       <div className="all">
@@ -36,8 +39,9 @@ var SkillApplication = React.createClass({
             <SelectEvent handleAddEvent={this.handleAddEvent} />
         	</div>
         </div>
-        <div> All Skills: Event ID: {this.state.event_id}
-          <SkillTable skills={this.state.skills} eventId={this.state.event_id} />
+        <div> All Skills: Event ID: {this.state.event_id} Final Score: {this.state.event_final_score}
+          <SkillTable addSkill={this.addSkill} skills={this.state.skills} eventId={this.state.event_id} event_final_score={this.state.event_final_score} />
+        }
         </div>
       </div>
     )
