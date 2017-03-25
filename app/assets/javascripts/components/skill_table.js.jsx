@@ -9,11 +9,15 @@ var SkillTable = React.createClass({
 	},
 
 	render: function() {
+		var event_id = this.props.eventId;
+		// debugger;
 		var skills = this.props.skills.map(function(skill) {
 			return(
-			    <tr onClick={this.onItemClick} data-id={skill.link} key={skill.id}>
+			    <tr>
 			      <td>{skill.skill_name}</td>
-			      <td><a href="#">&#9658;</a></td>
+			      <td onClick={this.onItemClick} data-id={skill.link} key={skill.id}><a href="#">&#9658;</a></td>
+			      <td>eventid: {event_id}</td>
+			      <td>skillID: {skill.id} </td>
 			    </tr>
 			)
 		}.bind(this));

@@ -3,22 +3,22 @@ var SkillApplication = React.createClass({
   getInitialState: function() {
     return { skills: [], event_id: null };
   },
-  componentDidMount: function() {
-  	this.getDataFromApi();
-  },
-  getDataFromApi() {
-  	var self = this;
-  	$.ajax({
-  		url: '/api/skills/filter',
-  		success: function(data) {
-  			self.setState({ skills: data });
-  			// alert(JSON.stringify(data));
-  		},
-  		error: function(xhr, status, error) {
-  			alert('Cannot get data from API: ', error);
-  		}
-  	});
-  },
+  // componentDidMount: function() {
+  // 	this.getDataFromApi();
+  // },
+  // getDataFromApi() {
+  // 	var self = this;
+  // 	$.ajax({
+  // 		url: '/api/skills/filter',
+  // 		success: function(data) {
+  // 			self.setState({ skills: data });
+  // 			// alert(JSON.stringify(data));
+  // 		},
+  // 		error: function(xhr, status, error) {
+  // 			alert('Cannot get data from API: ', error);
+  // 		}
+  // 	});
+  // },
   handleAddEvent: function(data) {
     this.setState({ skills: data.skills, event_id: data.event_id });
   },
@@ -37,7 +37,7 @@ var SkillApplication = React.createClass({
         	</div>
         </div>
         <div> All Skills: Event ID: {this.state.event_id}
-          <SkillTable skills={this.state.skills} />
+          <SkillTable skills={this.state.skills} eventId={this.state.event_id} />
         </div>
       </div>
     )
