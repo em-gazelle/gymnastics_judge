@@ -7,7 +7,53 @@ var SkillTable = React.createClass({
         else { skill_link = skill_link+"?autoplay=1"}
 		skillDemo.src = skill_link;
 	},
+	addSkill: function(e) {
 
+		e.preventDefault();
+		var self = this;
+		skill_id = e.currentTarget.dataset.id;
+		event_id = self.props.eventId;
+		// if (this.validForm()) {
+		  $.ajax({
+			url: '/api/routines',
+			method: 'POST',
+			data: { routine: { event_id: event_id, skill_id: skill_id } },
+			success: function(data) {
+				self.props.addSkill(data);
+				// self.setState(self.getInitialState());
+				// will need to set '@event' data (@event.final_info) @event.skills + @event.final_score + @event.unmet_requirements...	
+			},
+			error: function(xhr, status, error) {
+				alert('Skill cannot be added to routine: ', error);
+			}
+		  })
+
+
+		// if (this.validForm()) {
+		//   $.ajax({
+		// 	url: '/api/routines',
+		// 	method: 'POST',
+		// 	data: { routine: {event_id: event_id, skill_id: this.props.skill.id} },
+		// 	success: function(data) {
+		// 		self.props.addSkill(data);
+		// 		// self.setState(self.getInitialState());
+		// 		// will need to set '@event' data (@event.final_info) @event.skills + @event.final_score + @event.unmet_requirements...	
+		// 	},
+		// 	error: function(xhr, status, error) {
+		// 		alert('Skill cannot be added to routine: ', error);
+		// 	}
+		//   })
+		// } else {
+		// 	alert('Something went wrong');
+		// }
+	},
+	// validForm: function() {
+	// 	if (this.state.eventId) && (this.state.skill.id) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// },
 	render: function() {
 		var event_id = this.props.eventId;
 		// debugger;
@@ -18,6 +64,7 @@ var SkillTable = React.createClass({
 			      <td onClick={this.onItemClick} data-id={skill.link} key={skill.id}><a href="#">&#9658;</a></td>
 			      <td>eventid: {event_id}</td>
 			      <td>skillID: {skill.id} </td>
+			      <td onClick={this.addSkill} data-id={skill.id} key={(skill.id+400)}><button>Include Skill</button></td>
 			    </tr>
 			)
 		}.bind(this));

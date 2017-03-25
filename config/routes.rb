@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     
   namespace :api do
     resources :events do #, only: [:new, :create, :show, :destroy] do
-      resources :routines, only: [:new, :create, :index, :destroy]
+      # resources :routines, only: [:new, :create, :index, :destroy]
 
       resources :skills, only: [:index, :show] do
         # get :filter, on: :collection
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:index] do
       get :filter, on: :collection
     end
+    resources :routines, only: [:new, :create, :index, :destroy]
     
   end
 

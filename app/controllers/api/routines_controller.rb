@@ -2,8 +2,8 @@ module Api
 	class RoutinesController < ApplicationController
 
 		def create
-			@event = Event.find(params[:event_id])
-			@skill = Skill.find_by(skill_name: routine_params[:skill_name])
+			@event = Event.find(routine_params[:event_id])
+			@skill = Skill.find(routine_params[:skill_id])
 
 			if @event.skills << @skill
 				render json: @event.skills
@@ -25,7 +25,7 @@ module Api
 		private
 
 		def routine_params
-			params.require(:skill).permit(:skill_name)
+			params.require(:routine).permit(:skill_id, :event_id)
 		end
 	end
 end
