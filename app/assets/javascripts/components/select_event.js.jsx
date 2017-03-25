@@ -1,26 +1,27 @@
 var SelectEvent = React.createClass({
-     getInitialState: function() {
-        return {
-            value: 'All Events'
-        }
-     },
-	handleSearch: function(event) {
-		selected_event = event.target.value;	
-		var self = this;
-		$.ajax({
-			url: 'api/skills/filter',
-			data: {selected_event: selected_event},
-			success: function(data) {
-				self.props.handleSearch(data);
-			},
-			error: function(xhr, status, error) {
-				alert('Search Error: ', status, xhr, error);
-			}
-		});
-	},
-	change: function(event){
+  getInitialState: function() {
+    return {
+        value: 'All Events'
+    }
+  },
+  handleAddEvent: function(event) {
+    selected_event = event.target.value;  
+    var self = this;
+    $.ajax({
+      url: 'api/events',
+      method: 'POST',
+      data: {event: {event_name: selected_event}},
+      success: function(data) {
+        self.props.handleAddEvent(data);
+      },
+      error: function(xhr, status, error) {
+        alert('Could not add new event: ', status, xhr, error);
+      }
+    });
+  },
+  change: function(event){
         this.setState({value: event.target.value});
-        this.handleSearch(event);
+        this.handleAddEvent(event);
     },
     render: function(){
         return(

@@ -1,8 +1,7 @@
 var SkillApplication = React.createClass({
  
   getInitialState: function() {
-  	return { skills: [] };
-    // return { events: [] };
+    return { skills: [], event_id: null };
   },
   componentDidMount: function() {
   	this.getDataFromApi();
@@ -19,21 +18,9 @@ var SkillApplication = React.createClass({
   			alert('Cannot get data from API: ', error);
   		}
   	});
-
-    // $.ajax({
-    //   url: '/api/events',
-    //   success: function(data) {
-    //     self.setState({ events: data });
-    //     alert(JSON.stringify(data));
-    //   },
-    //   error: function(xhr, status, error) {
-    //     alert('Cannot get data from API: ', error);
-    //   }
-    // });
-  
   },
-  handleSearch: function(skills) {
-  	this.setState({ skills: skills });
+  handleAddEvent: function(data) {
+    this.setState({ skills: data.skills, event_id: data.event_id });
   },
   render: function() {
     return(
@@ -46,17 +33,12 @@ var SkillApplication = React.createClass({
             Choose your favorite gymnastics event:
       		</div>
           <div className="horizontal">
-            <SelectEvent handleSearch={this.handleSearch} />
+            <SelectEvent handleAddEvent={this.handleAddEvent} />
         	</div>
         </div>
-        <div>
+        <div> All Skills: Event ID: {this.state.event_id}
           <SkillTable skills={this.state.skills} />
         </div>
-
-{/*        <div>
-          <EventTable events={this.state.events} />
-        </div>
-*/}
       </div>
     )
   }
