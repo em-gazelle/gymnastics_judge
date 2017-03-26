@@ -1,7 +1,13 @@
 var SkillApplication = React.createClass({
  
   getInitialState: function() {
-    return { skills: [], event_id: null, event_final_score: '' };
+    return { 
+      skills: [], 
+      event_id: null, 
+      final_score: '', 
+      unmet_requirements: [],
+      event_skills: [] 
+    }
   },
   // componentDidMount: function() {
   // 	this.getDataFromApi();
@@ -23,7 +29,10 @@ var SkillApplication = React.createClass({
     this.setState({ skills: data.skills, event_id: data.event_id });
   },
   addSkill: function(data) {
-    this.setState({ event_final_score: data.event_info.final_score });
+    this.setState({ final_score: data.event_info.final_score, 
+                    unmet_requirements: data.event_info.unmet_requirements,
+                    event_skills: data.event_info.skills
+});
   },
   render: function() {
     return(
@@ -39,9 +48,12 @@ var SkillApplication = React.createClass({
             <SelectEvent handleAddEvent={this.handleAddEvent} />
         	</div>
         </div>
-        <div> All Skills: Event ID: {this.state.event_id} Final Score: {this.state.event_final_score}
-          <SkillTable addSkill={this.addSkill} skills={this.state.skills} eventId={this.state.event_id} event_final_score={this.state.event_final_score} />
-        }
+        <div> Which skills would you like to perform in your routine?
+          <SkillTable addSkill={this.addSkill} skills={this.state.skills} eventId={this.state.event_id} 
+            final_score={this.state.final_score} event_skills={this.state.event_skills} unmet_requirements={this.state.unmet_requirements} />
+        </div>
+        <div> Final Score: {this.state.final_score} Missing Requirements: {this.state.unmet_requirements}
+          <EventSkillTable event_skills={this.state.event_skills} />
         </div>
       </div>
     )

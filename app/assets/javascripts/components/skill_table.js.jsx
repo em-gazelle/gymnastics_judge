@@ -1,5 +1,4 @@
 var SkillTable = React.createClass({
-
 	onItemClick: function(e) {
 	    var skillDemo = document.getElementById('skillDemo');
 	    skill_link = e.currentTarget.dataset.id;
@@ -32,8 +31,6 @@ var SkillTable = React.createClass({
 			    <tr>
 			      <td>{skill.skill_name}</td>
 			      <td onClick={this.onItemClick} data-id={skill.link} key={'FS'+skill.id}><a href="#">&#9658;</a></td>
-			      <td>eventid: {event_id}</td>
-			      <td>skillID: {skill.id} </td>
 			      <td onClick={this.addSkill} data-id={skill.id} key={('AS'+skill.id)}><button>Include Skill</button></td>
 			    </tr>
 			)
@@ -45,8 +42,9 @@ var SkillTable = React.createClass({
 					<table id="skills-table" className="horizontal">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
+								<th>Skill</th>
+								<th>Skill Demo</th>
+								<th>Add Skill to Routine</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,9 +56,6 @@ var SkillTable = React.createClass({
 					    {/* <ReactPlayer url='https://www.youtube.com/watch?v=d46Azg3Pm4c' playing /> */}
 					</div>
 				</div>
-				{/* <div>
-			        <EventTable events={this.state.events} />
-		        </div> */}
 	    	</div>
 		)
 	}

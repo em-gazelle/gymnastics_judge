@@ -38,9 +38,9 @@ class Event < ActiveRecord::Base
 		if @event_name == "Vault"
 			{ missing_two_different_vaults: @skills.count != 2 }.delete_if {|req, missing_req| missing_req == false }
 		elsif @event_name == "Floor"
-			@missing_elements	
+			@missing_elements.to_a	
 		else @event_name == "Beam" || "Uneven Bars"
-			{ missing_elements: @missing_elements, missing_mount: @skills.find_by(mount: true).blank?, missing_dismount: @skills.find_by(dismount: true).blank? }.delete_if {|missing_req, value| value==false || value.blank?}
+			{ missing_elements: @missing_elements.to_a, missing_mount: @skills.find_by(mount: true).blank?, missing_dismount: @skills.find_by(dismount: true).blank? }.delete_if {|missing_req, value| value==false || value.blank?}
 		end
 	end
 
@@ -93,7 +93,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def final_info	
-		{ final_score: final_score, unmet_requirements: unmet_requirements, skills: @skills }
+		{ final_score: final_score, unmet_requirements: unmet_requirements.to_a.to_json, skills: @skills.to_a }
 	end
 	# Refactor ... 'event' to 'routine' and 'routine' to 'deduction/modification'. put connection_values as new Skill instances (skill_name: connected-skill-to-skill vs. skill, skill + deduction_val) depending on gymnastics-rules (how much volitility in connection value differences? common factors [A to A/element_group or random and more nuanced?])
 
