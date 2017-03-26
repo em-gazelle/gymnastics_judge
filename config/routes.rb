@@ -10,11 +10,11 @@ Rails.application.routes.draw do
         # get :filter, on: :collection
       end
     end
-    resources :skills, only: [:index] do
+    resources :skills, only: [:index, :destroy] do
       get :filter, on: :collection
     end
     resources :routines, only: [:new, :create, :index, :destroy]
-    
+
   end
 
   # move event_name onto skill

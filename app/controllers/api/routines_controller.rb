@@ -7,7 +7,6 @@ module Api
 
 			if @event.skills << @skill
 				render json: { event_info: @event.final_info }
-				# event_skills: @event.skills
 			else
 				render json: "Couldn't add skill to routine"
 			end

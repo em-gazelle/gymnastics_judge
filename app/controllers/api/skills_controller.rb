@@ -15,6 +15,16 @@ module Api
 			render json: @skills
 		end
 
+		def destroy
+			@skills = Event.find(params[:event_id]).skills
+			@skill = Skill.find(params[:id])
+			if @skills.destroy(@skill)
+				render json: @skills
+			else
+		    	render json: @skill.skill_name, message: "Failed to remove", status: :bad_request
+		    end
+		end
+		
 		private
 
 		def set_event
