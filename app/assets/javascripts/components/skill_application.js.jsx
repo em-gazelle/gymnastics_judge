@@ -15,9 +15,9 @@ var SkillApplication = React.createClass({
   // getDataFromApi() {
   // 	var self = this;
   // 	$.ajax({
-  // 		url: '/api/skills/filter',
+  // 		url: '/api/event/'+event_id+'',
   // 		success: function(data) {
-  // 			self.setState({ skills: data });
+  // 			self.setState({ event_skills: data.skills });
   // 			// alert(JSON.stringify(data));
   // 		},
   // 		error: function(xhr, status, error) {
@@ -29,8 +29,12 @@ var SkillApplication = React.createClass({
     this.setState({ skills: data.skills, event_id: data.event_id });
   },
   removeFromRoutine: function(data) {
-    alert('skillApp');
-    self.setState({ event_skills: data.skills });
+    // debugger;
+    
+    this.setState({event_skills: data});
+    // debugger;
+    // alert('skillApp');
+    // self.setState({ event_skills: data });
   },
   addSkill: function(data) {
     this.setState({ final_score: data.event_info.final_score, 
@@ -57,7 +61,7 @@ var SkillApplication = React.createClass({
             final_score={this.state.final_score} event_skills={this.state.event_skills} unmet_requirements={this.state.unmet_requirements} />
         </div>
         <div> Final Score: {this.state.final_score} Missing Requirements: {this.state.unmet_requirements}
-          <EventSkillTable event_skills={this.state.event_skills} event_id={this.state.event_id}/>
+          <EventSkillTable removeFromRoutine={this.removeFromRoutine} event_skills={this.state.event_skills} event_id={this.state.event_id}/>
         </div>
       </div>
     )
