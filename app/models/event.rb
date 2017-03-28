@@ -31,6 +31,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def unmet_requirements
+		# return { missing_elements: required_elements } if @skills.empty?
 		# return list of all missing skills / requirements to user
 		routine_elements = @skills.group(:element_group).count
 		@missing_elements = (@event_name == "Vault") || routine_elements.merge(required_elements){|key, routine, required| required - routine}.delete_if {|element, diff_required_v_actual| diff_required_v_actual <= 0}
@@ -38,9 +39,9 @@ class Event < ActiveRecord::Base
 		if @event_name == "Vault"
 			{ missing_two_different_vaults: @skills.count != 2 }.delete_if {|req, missing_req| missing_req == false }
 		elsif @event_name == "Floor"
-			@missing_elements.to_a	
+			@missing_elements	
 		else @event_name == "Beam" || "Uneven Bars"
-			{ missing_elements: @missing_elements.to_a, missing_mount: @skills.find_by(mount: true).blank?, missing_dismount: @skills.find_by(dismount: true).blank? }.delete_if {|missing_req, value| value==false || value.blank?}
+			{ missing_elements: @missing_elements, missing_mount: @skills.find_by(mount: true).blank?, missing_dismount: @skills.find_by(dismount: true).blank? }.delete_if {|missing_req, value| value==false || value.blank?}
 		end
 	end
 
@@ -92,8 +93,21 @@ class Event < ActiveRecord::Base
 		(d_score + e_score - neutral_deductions).to_s
 	end
 
-	def final_info	
-		{ final_score: final_score, unmet_requirements: unmet_requirements.to_a.to_json, skills: @skills.to_a }
+	def format_unmet_requirements
+		formatted_reqs = []
+
+		unmet_requirements.each do |req|
+			if req.include?(true)
+				formatted_reqs.push(req[0].to_s.gsub("missing_", '').split("_").map{|r| r.capitalize}.join(" "))
+			else
+				req[1].map{|r| formatted_reqs.push("#{r[1]} #{r[0]} Skills")}
+			end
+		end
+		formatted_reqs
+	end
+
+	def final_info
+		{ final_score: final_score, unmet_requirements: format_unmet_requirements, skills: @skills.to_a }
 	end
 	# Refactor ... 'event' to 'routine' and 'routine' to 'deduction/modification'. put connection_values as new Skill instances (skill_name: connected-skill-to-skill vs. skill, skill + deduction_val) depending on gymnastics-rules (how much volitility in connection value differences? common factors [A to A/element_group or random and more nuanced?])
 

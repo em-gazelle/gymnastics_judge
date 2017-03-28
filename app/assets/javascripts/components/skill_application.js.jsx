@@ -9,32 +9,11 @@ var SkillApplication = React.createClass({
       event_skills: [] 
     }
   },
-  // componentDidMount: function() {
-  // 	this.getDataFromApi();
-  // },
-  // getDataFromApi() {
-  // 	var self = this;
-  // 	$.ajax({
-  // 		url: '/api/event/'+event_id+'',
-  // 		success: function(data) {
-  // 			self.setState({ event_skills: data.skills });
-  // 			// alert(JSON.stringify(data));
-  // 		},
-  // 		error: function(xhr, status, error) {
-  // 			alert('Cannot get data from API: ', error);
-  // 		}
-  // 	});
-  // },
   handleAddEvent: function(data) {
     this.setState({ skills: data.skills, event_id: data.event_id });
   },
   removeFromRoutine: function(data) {
-    // debugger;
-    
-    this.setState({event_skills: data});
-    // debugger;
-    // alert('skillApp');
-    // self.setState({ event_skills: data });
+    this.setState({event_skills: data.skills, final_score: data.final_score, unmet_requirements: data.unmet_requirements});
   },
   addSkill: function(data) {
     this.setState({ final_score: data.event_info.final_score, 
@@ -43,6 +22,12 @@ var SkillApplication = React.createClass({
 });
   },
   render: function() {
+      var unmet_requirements = this.state.unmet_requirements.map(function(req) {
+        return(
+              <p>{req}</p>
+          )
+      }.bind(this));
+
     return(
       <div className="all">
       	<div>
@@ -60,8 +45,12 @@ var SkillApplication = React.createClass({
           <SkillTable addSkill={this.addSkill} skills={this.state.skills} eventId={this.state.event_id} 
             final_score={this.state.final_score} event_skills={this.state.event_skills} unmet_requirements={this.state.unmet_requirements} />
         </div>
-        <div> Final Score: {this.state.final_score} Missing Requirements: {this.state.unmet_requirements}
-          <EventSkillTable removeFromRoutine={this.removeFromRoutine} event_skills={this.state.event_skills} event_id={this.state.event_id}/>
+        <div> <p><strong>Final Score: {this.state.final_score} </strong></p>
+              <p><strong> Missing Requirements: </strong></p>
+                {unmet_requirements}
+              <div> <h3>All Skills in Routine:</h3>
+                <EventSkillTable removeFromRoutine={this.removeFromRoutine} event_skills={this.state.event_skills} event_id={this.state.event_id}/>
+              </div>
         </div>
       </div>
     )

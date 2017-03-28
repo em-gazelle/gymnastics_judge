@@ -66,4 +66,26 @@ RSpec.describe Event, type: :model do
 			end
 		end
 	end
+
+	describe 'format_unmet_requirements' do
+		subject { event.format_unmet_requirements }
+		context 'no unmet reqs' do
+			it 'returns [], no errors' do
+				expect(floor_met_reqs.format_unmet_requirements).to eq([])
+			end
+		end
+		context 'Reqs unmet for beam/floor' do
+			let(:event) { Fabricate(:event, event_name: "Beam") }			
+			it 'formats it prettily for easier HTML/JS parsing' do
+				expect(subject).to eq(["1 A Skills", "2 B Skills", "3 C Skills", "Mount", "Dismount"]) 
+			end
+		end
+		context 'unmet reqs for vault' do
+			let(:event) { Fabricate(:event, event_name: "Vault") }
+			it 'returns correct unmet reqs' do
+				expect(subject).to eq(["Two Different Vaults"])
+			end
+		end
+	end
+
 end

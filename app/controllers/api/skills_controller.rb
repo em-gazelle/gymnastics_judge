@@ -16,10 +16,10 @@ module Api
 		end
 
 		def destroy
-			@skills = Event.find(params[:event_id]).skills
+			@event = Event.find(params[:event_id])
 			@skill = Skill.find(params[:id])
-			if @skills.destroy(@skill)
-				render json: @skills
+			if @event.skills.destroy(@skill)
+				render json: @event.final_info
 			else
 		    	render json: @skill.skill_name, message: "Failed to remove", status: :bad_request
 		    end
