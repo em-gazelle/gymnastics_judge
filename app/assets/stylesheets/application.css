@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+/*#routineAnalysis {
+	display: inline-block;
+}*/
 .horizontal {
 	display: inline-block;
 	margin:5px;

@@ -52,7 +52,7 @@ var SkillTable = React.createClass({
 					    </tbody>
 					</table>
 					<div id="demo" className="horizontal"> 
-						<div className="center"><iframe id="skillDemo" width="560" height="315" src="about:blank" frameBorder="1"></iframe></div>
+						<div className="center"><iframe id="skillDemo" width="380" height="200" src="about:blank" frameBorder="1"></iframe></div>
 					    {/* <ReactPlayer url='https://www.youtube.com/watch?v=d46Azg3Pm4c' playing /> */}
 					</div>
 				</div>
