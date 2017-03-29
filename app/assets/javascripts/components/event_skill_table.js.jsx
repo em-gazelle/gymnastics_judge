@@ -1,9 +1,12 @@
 var EventSkillTable = React.createClass({
 	getInitialState: function() {
 		return {
-			event_skills: this.props.event_skills
+			event_skills: this.props.event_skills,
+			skill_links: [],
+			ind: 0
 		}
 	},
+
 	removeFromRoutine: function(e) {
 		// e.preventDefault();
 		var skill_id = e.currentTarget.dataset.id;
@@ -22,7 +25,12 @@ var EventSkillTable = React.createClass({
 			}
 		});
 	},
+	next: function() {
+		this.setState({ind: (this.state.ind+1) });
+	},
 	render: function() {
+		var skill_links = this.props.event_skills.map(function(s) {return s.link;});
+
 		var event_skills = this.props.event_skills.map(function(event_skill) {
 			return(
 			    <tr>
@@ -31,7 +39,7 @@ var EventSkillTable = React.createClass({
 			    </tr>
 			)
 		}.bind(this));
-	
+
 		return(
 			<div>
 				<table>
@@ -45,6 +53,10 @@ var EventSkillTable = React.createClass({
 						{event_skills}
 					</tbody>
 				</table>
+
+				Play: 
+				<ReactPlayer url={skill_links[this.state.ind]} playing onEnded={this.next} />
+
 			</div>
 		)
 	}
