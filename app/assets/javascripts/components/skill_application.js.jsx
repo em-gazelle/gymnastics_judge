@@ -10,7 +10,7 @@ var SkillApplication = React.createClass({
     }
   },
   handleAddEvent: function(data) {
-    this.setState({ skills: data.skills, event_id: data.event_id });
+    this.setState({ skills: data.skills, event_id: data.event_id, event_skills: [], final_score: '', unmet_requirements: [] });
   },
   removeFromRoutine: function(data) {
     this.setState({event_skills: data.skills, final_score: data.final_score, unmet_requirements: data.unmet_requirements});
@@ -54,7 +54,7 @@ var SkillApplication = React.createClass({
                 <EventSkillTable removeFromRoutine={this.removeFromRoutine} event_skills={this.state.event_skills} event_id={this.state.event_id}/>
           </div>
           <div className="horizontal">
-              <p><h3>Final Score: {this.state.final_score} </h3></p>
+              <h3>Final Score: {this.state.final_score} </h3>
               <p><strong> Missing Requirements: </strong></p>
                 {this.state.unmet_requirements.join(", ")}
           </div>
