@@ -89,7 +89,7 @@ class Event < ActiveRecord::Base
 		@skills = self.skills
 		return "-" if @skills.empty?
 
-		(d_score + e_score - neutral_deductions).to_s
+		(d_score + e_score - neutral_deductions).round(3).to_s
 	end
 
 	def format_unmet_requirements

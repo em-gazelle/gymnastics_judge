@@ -11,14 +11,13 @@ var EventSkillTable = React.createClass({
 		// e.preventDefault();
 		var skill_id = e.currentTarget.dataset.id;
 		var event_id = this.props.event_id;
-		var self = this;
 
 		$.ajax({
 			url: 'api/skills/'+skill_id,
 			method: 'DELETE',
 			data: { id: skill_id, event_id: event_id },
-			success: function(data) {
-				self.props.removeFromRoutine(data);
+			success: (data) => {
+				this.props.removeFromRoutine(data);
 			},
 			error: function(xhr, status, error) {
 				alert('Skill could not be removed from routine.');
@@ -27,6 +26,10 @@ var EventSkillTable = React.createClass({
 	},
 	next: function() {
 		this.setState({ind: (this.state.ind+1) });
+	},
+	getLink: function() {
+		var skill_links = this.props.event_skills.map(function(s) {return s.link;});
+		return skill_links[this.state.ind];
 	},
 	render: function() {
 		var skill_links = this.props.event_skills.map(function(s) {return s.link;});
@@ -55,7 +58,7 @@ var EventSkillTable = React.createClass({
 				</table>
 
 				Play: 
-				<ReactPlayer url={skill_links[this.state.ind]} playing onEnded={this.next} />
+				<ReactPlayer url={this.getLink()} playing onEnded={this.next} />
 
 			</div>
 		)
