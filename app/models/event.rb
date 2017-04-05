@@ -39,7 +39,7 @@ class Event < ActiveRecord::Base
 		if @event_name == "Vault"
 			{ missing_two_different_vaults: @skills.count != 2 }.delete_if {|req, missing_req| missing_req == false }
 		elsif @event_name == "Floor"
-			@missing_elements
+			{ missing_elements: @missing_elements}.delete_if { |req, missing_req| missing_req.empty? }
 		else @event_name == "Beam" || "Uneven Bars"
 			{ missing_elements: @missing_elements, missing_mount: @skills.find_by(mount: true).blank?, missing_dismount: @skills.find_by(dismount: true).blank? }.delete_if {|missing_req, value| value==false || value.blank?}
 		end
