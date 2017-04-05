@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Api::RoutinesController, type: :controller do
 	let(:mythical_event) { Fabricate(:event, event_name: "Vault") }
-	let(:mythical_skill) { Fabricate(:skill, event_name: "mythical_event", skill_name: "Mythical") }
+	let(:mythical_skill) { Fabricate(:skill, event_name: "Floor", skill_name: "Mythical") }
 	let(:mystical_event) do
-		Fabricate(:event, event_name: "Mystical") do
+		Fabricate(:event, event_name: "Floor") do
 			skills { Fabricate.times(13, :skill, event_name: "Mystical", points: 33) }
 		end
 	end
@@ -12,9 +12,10 @@ RSpec.describe Api::RoutinesController, type: :controller do
 	
 	describe 'create' do
 		it 'adds skill into event routine' do
-			post :create, event_id: mythical_event.id, skill: { skill_name: mythical_skill.skill_name }
+			expect{
+				post :create, routine: { event_id: mythical_event.id, skill_id: mythical_skill.id }
+			}.to change(Routine, :count).by(1)
 			expect(response.status).to eq(200)
-			expect(JSON.parse(response.body)).to eq([JSON.parse(mythical_skill.to_json)])
 		end
 	end
 

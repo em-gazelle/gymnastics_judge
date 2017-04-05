@@ -10,19 +10,26 @@ RSpec.describe Api::EventsController, type: :controller do
 		end
 	end
 	let(:vault_met_reqs_final_info) do
-		{ final_score: "15.0", unmet_requirements: {}, skills: vault_met_reqs.skills }
+		{ final_score: "15.0", unmet_requirements: [], skills: vault_met_reqs.skills }
 	end
 	let(:event_with_no_skills_final_info) do
-		{ final_score: "-", unmet_requirements: { missing_elements: {"A"=> 1, "B"=> 2, "C"=> 3}, missing_mount: true, missing_dismount: true }, skills: [] }
+		{ final_score: "-", unmet_requirements: ["1 A Skills", "2 B Skills", "3 C Skills", "Mount", "Dismount"], skills: [] }
 	end
+	let(:beam_skills) { Fabricate.times(5, :skill, event_name: "Beam") }
+	let(:vault_skills) { Fabricate.times(3, :skill, event_name: "Vault") }
 
 	describe 'new' do
 	end
 
 	describe 'create' do
 		it 'creates event/routine instance with designated event_name' do
+			beam_skills
+			vault_skills
+
 			post :create, event: event_params
-			expect(JSON.parse(response.body)['event_name']).to eq(event.event_name)
+			expect(JSON.parse(response.body)['event_id']).to eq(Event.last.id)
+			expect(JSON.parse(response.body)['event_name']).to eq(event_params['event_name'])
+			expect(JSON.parse(response.body)['skills'].count).to eq(5)
 		end
 	end
 

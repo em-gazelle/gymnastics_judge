@@ -13,7 +13,7 @@ module Api
 			@event = Event.create(event_params)
 			if @event.save
 				render json: { skills: Skill.where(event_name: @event.event_name), 
-								event_id: @event.id }
+								event_id: @event.id, event_name: @event.event_name }
 			else
 				render nothing: true, status: :bad_request
 			end

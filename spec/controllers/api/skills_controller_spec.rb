@@ -10,12 +10,13 @@ RSpec.describe Api::SkillsController, type: :controller do
 		ludicrous_skills
 	end
 
-	describe 'filter' do
-		it 'filters skills by event_name' do
+	# no longer used
+	# describe 'filter' do
+		# it 'filters skills by event_name' do
 			# get :filter, selected_event: event.event_name
-			get :filter, event_id: event.id
-			expect(response.body).to eq(ineffable_skills.to_json)
-		end
-	end
+			# get :filter, event_id: event.id
+			# expect(response.body).to eq(ineffable_skills.to_json)
+		# end
+	# end
 
 end
